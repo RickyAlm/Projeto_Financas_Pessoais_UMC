@@ -12,91 +12,91 @@
 
 <body>
   <div class="container">
-    <div class="register-container pulse">
-      <div class="register-header">
+    <div class="cadastro-container pulse">
+      <div class="cadastro-header">
         <h2>CRIAR UMA CONTA</h2>
       </div>
-      <div class="register-body">
-        <form>
+      <div class="cadastro-body">
+        <form method="post" action="cadastroUsuario.jsp">
           <div class="form-row">
-            <div class="floating-input">
+            <div class="div-campo-input">
               <i class="fas fa-user"></i>
               <div class="form-floating">
-                <input type="text" class="form-control" id="firstName" placeholder="Nome">
-                <label for="firstName">Nome</label>
+                <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome">
+                <label for="nome">Nome</label>
               </div>
             </div>
 
-            <div class="floating-input">
+            <div class="div-campo-input">
               <i class="fas fa-user"></i>
               <div class="form-floating">
-                <input type="text" class="form-control" id="lastName" placeholder="Sobrenome">
-                <label for="lastName">Sobrenome</label>
+                <input type="text" class="form-control" id="sobrenome" name="sobrenome" placeholder="Sobrenome">
+                <label for="sobrenome">Sobrenome</label>
               </div>
             </div>
           </div>
 
-          <div class="floating-input">
+          <div class="div-campo-input">
             <i class="fas fa-envelope"></i>
             <div class="form-floating">
-              <input type="email" class="form-control" id="email" placeholder="E-mail">
+              <input type="email" class="form-control" id="email" name="email" placeholder="E-mail">
               <label for="email">E-mail</label>
             </div>
           </div>
 
-          <div class="floating-input">
+          <div class="div-campo-input">
             <i class="fas fa-phone"></i>
             <div class="form-floating">
-              <input type="tel" class="form-control" id="phone" placeholder="Telefone">
-              <label for="phone">Telefone</label>
+              <input type="tel" class="form-control" id="telefone" name="telefone" placeholder="Telefone">
+              <label for="telefone">Telefone</label>
             </div>
           </div>
 
-          <div class="floating-input">
+          <div class="div-campo-input">
             <i class="fas fa-calendar"></i>
             <div class="form-floating">
-              <input type="date" class="form-control" id="birthDate" placeholder="Data de Nascimento">
-              <label for="birthDate">Data de Nascimento</label>
+              <input type="date" class="form-control" id="dataNascimento" name="dataNascimento" placeholder="Data de Nascimento">
+              <label for="dataNascimento">Data de Nascimento</label>
             </div>
           </div>
 
-          <div class="floating-input">
+          <div class="div-campo-input">
             <i class="fas fa-lock"></i>
             <div class="form-floating">
-              <input type="password" class="form-control" id="password" placeholder="Senha">
-              <label for="password">Senha</label>
+              <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha">
+              <label for="senha">Senha</label>
             </div>
           </div>
 
-          <div class="floating-input">
+          <div class="div-campo-input">
             <i class="fas fa-lock"></i>
             <div class="form-floating">
-              <input type="password" class="form-control" id="confirmPassword" placeholder="Confirmar Senha">
-              <label for="confirmPassword">Confirmar Senha</label>
+              <input type="password" class="form-control" id="confirmarSenha" name="confirmarSenha" placeholder="Confirmar Senha">
+              <label for="confirmarSenha">Confirmar Senha</label>
             </div>
           </div>
 
-          <div class="form-check terms-check mb-4">
-            <input class="form-check-input" type="checkbox" id="terms">
-            <label class="form-check-label" for="terms">
+          <div class="form-check verificar-termos mb-4">
+            <input class="form-check-input" type="checkbox" id="termos" name="termos">
+            <label class="form-check-label" for="termos">
               Eu concordo com os <a href="#">Termos de Serviço</a> e <a href="#">Política de Privacidade</a>
             </label>
           </div>
 
-          <button type="submit" class="btn btn-register mb-3">CADASTRAR</button>
+          <button type="submit" class="btn btn-cadastro mb-3">CADASTRAR</button>
 
-          <div class="divider">
-            <span class="divider-text">OU CADASTRE-SE COM</span>
+          <div class="cadastre-se-div">
+            <span class="cadastre-se-text">OU CADASTRE-SE COM</span>
           </div>
 
-          <div class="social-register">
+          <div class="social-cadastro">
             <a href="#" class="social-btn facebook"><i class="fab fa-facebook-f"></i></a>
             <a href="#" class="social-btn google"><i class="fab fa-google"></i></a>
             <a href="#" class="social-btn instagram"><i class="fab fa-instagram"></i></a>
           </div>
 
-          <div class="register-footer">
-            Já tem uma conta? <a href="login.html">Faça login</a>
+          <div class="cadastro-footer">
+              Já tem uma conta? <a href="../loginUsuario/index.html">Faça login</a>
           </div>
         </form>
       </div>

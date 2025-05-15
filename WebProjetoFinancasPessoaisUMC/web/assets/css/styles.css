@@ -36,7 +36,7 @@ input[type="date"] {
   justify-content: center;
 }
 
-.register-container,
+.cadastro-container,
 .login-container {
   background-color: white;
   border-radius: 15px;
@@ -47,12 +47,12 @@ input[type="date"] {
   transition: all 0.3s ease;
 }
 
-.register-container:hover,
+.cadastro-container:hover,
 .login-container:hover {
   box-shadow: 0 15px 35px rgba(0, 152, 150, 0.25);
 }
 
-.register-header,
+.cadastro-header,
 .login-header {
   background: linear-gradient(135deg, var(--cor-principal), var(--azul-medio));
   color: white;
@@ -61,14 +61,14 @@ input[type="date"] {
   position: relative;
 }
 
-.register-header h2,
+.cadastro-header h2,
 .login-header h2 {
   margin: 0;
   font-weight: 700;
   letter-spacing: 1px;
 }
 
-.register-body,
+.cadastro-body,
 .login-body {
   padding: 30px;
 }
@@ -99,26 +99,26 @@ input[type="date"] {
     border: solid 1px var(--cor-principal);
 }
 
-.remember-me input:checked {
+.lembre-me input:checked {
     background-color: var(--cor-principal);
     border: var(--cor-principal);
 }
 
-.remember-me input:checked:hover {
+.lembre-me input:checked:hover {
     background-color: var(--cor-principal);
     border: var(--cor-principal);
 }
 
-.forgot-password {
+.esqueceu-senha {
     text-decoration: none;
     color: var(--azul-medio);
 }
 
-.forgot-password:hover {
+.esqueceu-senha:hover {
     text-decoration: underline;
 }
 
-.btn-register,
+.btn-cadastro,
 .btn-login {
   background: linear-gradient(to right, var(--cor-principal), var(--azul-medio));
   border: none;
@@ -131,19 +131,19 @@ input[type="date"] {
   width: 100%;
 }
 
-.btn-register:hover,
+.btn-cadastro:hover,
 .btn-login:hover {
   color: white;
   background: linear-gradient(to right, var(--cor-principal), var(--azul-escuro));
   transform: translateY(-2px);
 }
 
-.btn-register:active,
+.btn-cadastro:active,
 .btn-login:active {
   transform: translateY(0);
 }
 
-.social-register,
+.social-cadastro,
 .social-login {
   display: flex;
   justify-content: center;
@@ -179,31 +179,31 @@ input[type="date"] {
   background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
 }
 
-.register-footer,
+.cadastro-footer,
 .login-footer {
   text-align: center;
   margin-top: 20px;
   color: #6c757d;
 }
 
-.register-footer a,
+.cadastro-footer a,
 .login-footer a {
   color: var(--azul-medio);
   text-decoration: none;
   font-weight: 500;
 }
 
-.register-footer a:hover,
+.cadastro-footer a:hover,
 .login-footer a:hover {
   text-decoration: underline;
 }
 
-.floating-input {
+.div-campo-input {
   position: relative;
   margin-bottom: 20px;
 }
 
-.floating-input i {
+.div-campo-input i {
   position: absolute;
   left: 15px;
   top: 50%;
@@ -212,20 +212,20 @@ input[type="date"] {
   z-index: 10;
 }
 
-.divider {
+.cadastre-se-div {
   display: flex;
   align-items: center;
   margin: 20px 0;
 }
 
-.divider::before,
-.divider::after {
+.cadastre-se-div::before,
+.cadastre-se-div::after {
   content: "";
   flex: 1;
   border-bottom: 1px solid #dee2e6;
 }
 
-.divider-text {
+.cadastre-se-text {
   padding: 0 10px;
   color: #6c757d;
   font-size: 14px;
@@ -249,16 +249,16 @@ input[type="date"] {
   }
 }
 
-.terms-check {
+.verificar-termos {
   color: var(--azul-medio);
 }
 
-.terms-check input:checked {
+.verificar-termos input:checked {
   background-color: var(--cor-principal);
   border-color: var(--cor-principal);
 }
 
-.terms-check a {
+.verificar-termos a {
     color: var(--azul-medio);
     text-decoration: underline;
 }
@@ -268,6 +268,6 @@ input[type="date"] {
   gap: 15px;
 }
 
-.form-row .floating-input {
+.form-row .div-campo-input {
   flex: 1;
 }
