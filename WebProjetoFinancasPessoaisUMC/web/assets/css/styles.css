@@ -94,6 +94,30 @@ input[type="date"] {
   padding-left: 40px;
 }
 
+.form-check-input:focus {
+    box-shadow: 0 0 0 .25rem rgb(116 160 221 / 25%);
+    border: solid 1px var(--cor-principal);
+}
+
+.remember-me input:checked {
+    background-color: var(--cor-principal);
+    border: var(--cor-principal);
+}
+
+.remember-me input:checked:hover {
+    background-color: var(--cor-principal);
+    border: var(--cor-principal);
+}
+
+.forgot-password {
+    text-decoration: none;
+    color: var(--azul-medio);
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
 .btn-register,
 .btn-login {
   background: linear-gradient(to right, var(--cor-principal), var(--azul-medio));
