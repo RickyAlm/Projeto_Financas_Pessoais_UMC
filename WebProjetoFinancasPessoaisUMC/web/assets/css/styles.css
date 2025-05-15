@@ -1,0 +1,244 @@
+/* styles.css */
+:root {
+  --cor-principal: #009896;
+  --verde-escuro: #008451;
+  --verde-muito-escuro: #0C5741;
+  --azul-escuro: #194E72;
+  --azul-medio: #006996;
+  --verde-claro: #4CE6B5;
+  --fundo-cinza: #f5f7fa;
+}
+
+body {
+  background-color: var(--fundo-cinza);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: radial-gradient(circle at 10% 20%, rgba(0, 152, 150, 0.05) 0%, rgba(0, 152, 150, 0.05) 90%);
+}
+
+a {
+  text-decoration: none;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"],
+input[type="tel"],
+input[type="date"] {
+  padding-left: 37px !important;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.register-container,
+.login-container {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 152, 150, 0.15);
+  overflow: hidden;
+  width: 100%;
+  max-width: 450px;
+  transition: all 0.3s ease;
+}
+
+.register-container:hover,
+.login-container:hover {
+  box-shadow: 0 15px 35px rgba(0, 152, 150, 0.25);
+}
+
+.register-header,
+.login-header {
+  background: linear-gradient(135deg, var(--cor-principal), var(--azul-medio));
+  color: white;
+  padding: 25px;
+  text-align: center;
+  position: relative;
+}
+
+.register-header h2,
+.login-header h2 {
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.register-body,
+.login-body {
+  padding: 30px;
+}
+
+.form-control {
+  border-radius: 8px;
+  padding: 12px 15px;
+  border: 2px solid #e9ecef;
+  transition: all 0.3s;
+}
+
+.form-control:focus {
+  border-color: var(--cor-principal);
+  box-shadow: 0 0 0 0.25rem rgba(0, 152, 150, 0.25);
+}
+
+.input-group-text {
+  background-color: white;
+  border-right: none;
+}
+
+.form-floating>label {
+  padding-left: 40px;
+}
+
+.btn-register,
+.btn-login {
+  background: linear-gradient(to right, var(--cor-principal), var(--azul-medio));
+  border: none;
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+  width: 100%;
+}
+
+.btn-register:hover,
+.btn-login:hover {
+  color: white;
+  background: linear-gradient(to right, var(--cor-principal), var(--azul-escuro));
+  transform: translateY(-2px);
+}
+
+.btn-register:active,
+.btn-login:active {
+  transform: translateY(0);
+}
+
+.social-register,
+.social-login {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.social-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+  transition: all 0.3s;
+}
+
+.social-btn:hover {
+  transform: translateY(-3px);
+}
+
+.facebook {
+  background-color: #3b5998;
+}
+
+.google {
+  background-color: #db4437;
+}
+
+.instagram {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+
+.register-footer,
+.login-footer {
+  text-align: center;
+  margin-top: 20px;
+  color: #6c757d;
+}
+
+.register-footer a,
+.login-footer a {
+  color: var(--azul-medio);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.register-footer a:hover,
+.login-footer a:hover {
+  text-decoration: underline;
+}
+
+.floating-input {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.floating-input i {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--cor-principal);
+  z-index: 10;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.divider-text {
+  padding: 0 10px;
+  color: #6c757d;
+  font-size: 14px;
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 152, 150, 0.4);
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgba(0, 152, 150, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 152, 150, 0);
+  }
+}
+
+.terms-check {
+  color: var(--azul-medio);
+}
+
+.terms-check input:checked {
+  background-color: var(--cor-principal);
+  border-color: var(--cor-principal);
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+}
+
+.form-row .floating-input {
+  flex: 1;
+}
