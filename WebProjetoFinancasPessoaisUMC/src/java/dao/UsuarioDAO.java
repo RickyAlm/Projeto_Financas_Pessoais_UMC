@@ -42,6 +42,45 @@ public class UsuarioDAO {
         }
     }
     
+    public Usuario buscarPorEmail(String email) throws ClassNotFoundException, SQLException {
+        String sql = "SELECT * FROM usuario WHERE email = ?";
+        Usuario usuario = null;
+
+        try (Connection conexao = ConectaDB.conectar();
+             PreparedStatement ps = conexao.prepareStatement(sql)) {
+
+            ps.setString(1, email);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    usuario = new Usuario();
+                    usuario.setIdUsuario(rs.getInt("id_usuario"));
+                    usuario.setNome(rs.getString("nome"));
+                    usuario.setSobrenome(rs.getString("sobrenome"));
+                    usuario.setEmail(rs.getString("email"));
+                    usuario.setTelefone(rs.getString("telefone"));
+                    usuario.setDataNascimento(rs.getDate("data_nascimento").toLocalDate());
+                    usuario.setSenha(rs.getString("senha"));
+                    usuario.setTipo(Usuario.TipoUsuario.valueOf(rs.getString("tipo")));
+                    usuario.setRendaMensal(rs.getBigDecimal("renda_mensal"));
+                    usuario.setDataCriacao(rs.getTimestamp("data_criacao"));
+                    usuario.setAtivo(rs.getBoolean("ativo"));
+                }
+            }
+        }
+        return usuario;
+    }
+    
+    public boolean verificarCredenciais(String email, String senha) throws ClassNotFoundException, SQLException {
+        Usuario usuario = buscarPorEmail(email);
+        
+        if (usuario != null) {
+            return usuario.getSenha().equals(senha) && usuario.isAtivo();
+        }
+        
+        return false;
+    }
+    
     public List<Usuario> consultarTodos() throws ClassNotFoundException {
         List<Usuario> lista = new ArrayList<>();
         String sql = "SELECT * FROM usuario";
@@ -145,36 +184,12 @@ public class UsuarioDAO {
         }
     }
     
-    public Usuario login(String email, String senha) throws ClassNotFoundException {
-        String sql = "SELECT * FROM usuario WHERE email = ? AND senha = ?";
-        Usuario usuario = null;
+    public Usuario login(String email, String senha) throws ClassNotFoundException, SQLException {
+        Usuario usuario = buscarPorEmail(email);
         
-        try (Connection conexao = ConectaDB.conectar();
-             PreparedStatement ps = conexao.prepareStatement(sql)) {
-            
-            ps.setString(1, email);
-            ps.setString(2, senha);
-            
-            try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) {
-                    usuario = new Usuario();
-                    usuario.setIdUsuario(rs.getInt("id_usuario"));
-                    usuario.setNome(rs.getString("nome"));
-                    usuario.setSobrenome(rs.getString("sobrenome"));
-                    usuario.setEmail(rs.getString("email"));
-                    usuario.setTelefone(rs.getString("telefone"));
-                    usuario.setDataNascimento(rs.getDate("data_nascimento").toLocalDate());
-                    usuario.setSenha(rs.getString("senha"));
-                    usuario.setTipo(Usuario.TipoUsuario.valueOf(rs.getString("tipo")));
-                    usuario.setRendaMensal(rs.getBigDecimal("renda_mensal"));
-                    usuario.setDataCriacao(rs.getTimestamp("data_criacao"));
-                    usuario.setAtivo(rs.getBoolean("ativo"));
-                }
-            }
-        } catch(SQLException ex) {
-            System.out.println("Erro SQL ao fazer login: " + ex);
+        if (usuario != null && usuario.getSenha().equals(senha) && usuario.isAtivo()) {
+            return usuario;
         }
-        
-        return usuario;
+        return null;
     }
 }
