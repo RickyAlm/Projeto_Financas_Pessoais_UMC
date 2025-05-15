@@ -258,6 +258,11 @@ input[type="date"] {
   border-color: var(--cor-principal);
 }
 
+.terms-check a {
+    color: var(--azul-medio);
+    text-decoration: underline;
+}
+
 .form-row {
   display: flex;
   gap: 15px;
