@@ -15,7 +15,6 @@ import java.time.LocalDate;
  */
 
 public class Usuario {
-
     private int idUsuario;
     private String nome;
     private String sobrenome;
@@ -23,13 +22,13 @@ public class Usuario {
     private String telefone;
     private LocalDate dataNascimento;
     private String senha;
-    private TipoUsuario tipo = TipoUsuario.COMUM;
+    private TipoUsuario tipo = TipoUsuario.comum;
     private BigDecimal rendaMensal;
     private Timestamp dataCriacao;
     private boolean ativo = true;
 
     public enum TipoUsuario {
-        ADMIN, COMUM
+        admin, comum
     }
 
     public Usuario() {
