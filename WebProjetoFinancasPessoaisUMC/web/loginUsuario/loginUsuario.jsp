@@ -31,10 +31,10 @@
                             response.sendRedirect("../index.html");
                             return;
                         } else {
-                            out.println("<script><alert>E-mail ou senha incorretos!</alert></script>");
+                            out.println("<script>alert('E-mail ou senha incorretos!');</script>");
                         }
                     } catch (Exception e) {
-                        out.println("<script><alert>Erro no sistema. Por favor, tente novamente " + e + " .</alert></script>");
+                        out.println("<script>alert('Erro no sistema. Por favor, tente novamente: ' + e);</script>");
                         e.printStackTrace();
                     }
                 }
