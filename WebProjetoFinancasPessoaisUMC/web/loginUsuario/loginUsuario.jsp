@@ -20,7 +20,7 @@
                 String senha = request.getParameter("senha");
 
                 if (email == null || email.isEmpty() || senha == null || senha.isEmpty()) {
-                    out.println("<script><alert>E-mail e senha são obrigatórios!</alert></script>");
+                    out.println("<script>alert('E-mail e senha são obrigatórios!');</script>");
                 } else {
                     try {
                         UsuarioDAO dao = new UsuarioDAO();
