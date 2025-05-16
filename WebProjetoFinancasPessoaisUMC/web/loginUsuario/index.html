@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="login-container pulse">
+      <div class="login-header">
+        <h2>BEM-VINDO DE VOLTA</h2>
+      </div>
+      <div class="login-body">
+        <form method="post" action="loginUsuario.jsp">
+          <div class="div-campo-input">
+            <i class="fas fa-user"></i>
+            <div class="form-floating">
+              <input type="email" class="form-control ps-4" id="email" name="email" placeholder="name@example.com">
+              <label for="email">E-mail</label>
+            </div>
+          </div>
+
+          <div class="div-campo-input">
+            <i class="fas fa-lock"></i>
+            <div class="form-floating">
+              <input type="password" class="form-control ps-4" id="senha" name="senha" placeholder="Senha">
+              <label for="senha">Senha</label>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-between mb-4">
+            <div class="form-check lembre-me">
+              <input class="form-check-input" type="checkbox" id="lembreMe">
+              <label class="form-check-label" for="lembreMe">Lembrar-me</label>
+            </div>
+            <a href="#" class="esqueceu-senha">Esqueceu a senha?</a>
+          </div>
+
+          <button type="submit" class="btn btn-login mb-3">ENTRAR</button>
+
+          <div class="cadastre-se-div">
+            <span class="cadastre-se-text">OU CONTINUE COM</span>
+          </div>
+
+          <div class="social-login">
+            <a href="#" class="social-btn facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-btn google"><i class="fab fa-google"></i></a>
+            <a href="#" class="social-btn instagram"><i class="fab fa-instagram"></i></a>
+          </div>
+
+          <div class="login-footer">
+              Não tem uma conta? <a href="../cadastroUsuario/index.html">Cadastre-se</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
