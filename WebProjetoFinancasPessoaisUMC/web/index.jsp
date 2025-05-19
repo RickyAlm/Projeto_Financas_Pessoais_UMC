@@ -1,8 +1,11 @@
-<!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
--->
+<%-- 
+    Document   : index.jsp
+    Created on : 16 de mai. de 2025, 22:30:14
+    Author     : Rick
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include file="loginUsuario/verificaLogin.jsp"%>
 <html>
     <head>
         <title>Sistema</title>

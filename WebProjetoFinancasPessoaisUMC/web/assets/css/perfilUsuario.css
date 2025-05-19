@@ -1,0 +1,131 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 16 de mai. de 2025, 19:51:58
+    Author     : Henrique Vieira de Almeida
+*/
+
+:root {
+    --cor-principal: #009896;
+    --azul-medio: #006996;
+    --azul-escuro: #194E72;
+    --fundo-cinza: #f5f7fa;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--fundo-cinza);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.main-content {
+    margin-left: 0px;
+    padding: 30px;
+    min-height: 100vh;
+    transition: margin 0.3s;
+}
+
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.profile-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+}
+
+.profile-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.profile-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: var(--cor-principal);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 42px;
+    font-weight: bold;
+    margin: 0 auto 15px;
+    border: 5px solid white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.profile-name {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--azul-escuro);
+}
+
+.profile-email {
+    color: #6c757d;
+    margin-bottom: 20px;
+}
+
+.profile-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+}
+
+.btn-delete:hover {
+    background-color: #bb2d3b;
+    color: white;
+}
+
+.btn-logout {
+    background-color: var(--azul-escuro);
+    color: white;
+    border: none;
+}
+
+.btn-logout:hover {
+    background-color: #0d426e;
+    color: white;
+}
+
+.btn-logout,
+.btn-delete {
+    width: 80px
+}
+
+.btn-delete-modal {
+    text-align: center;
+    padding: 0px;
+    width: 100px;
+    font-size: 15px;
+}
+
+.btn-delete-modal:hover {
+    transform: translateY(0px);
+}
+
+.section-title {
+    color: var(--cor-principal);
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.profile-section {
+    margin-bottom: 30px;
+}

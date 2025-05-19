@@ -47,7 +47,6 @@
                         usuario.setTelefone(telefone);
                         usuario.setDataNascimento(LocalDate.parse(dataNascimentoStr));
                         usuario.setSenha(senha);
-                        usuario.setRendaMensal(BigDecimal.ZERO);
 
                         UsuarioDAO usuarioDAO = new UsuarioDAO();
                         boolean sucesso = usuarioDAO.inserir(usuario);

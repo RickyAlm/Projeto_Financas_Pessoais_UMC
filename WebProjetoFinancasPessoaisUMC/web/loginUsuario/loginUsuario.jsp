@@ -14,31 +14,34 @@
         <title>Login Usuário</title>
     </head>
     <body>
-        <%
-            if ("POST".equalsIgnoreCase(request.getMethod())) {
-                String email = request.getParameter("email");
-                String senha = request.getParameter("senha");
+<%
+    if ("POST".equalsIgnoreCase(request.getMethod())) {
+        String email = request.getParameter("email");
+        String senha = request.getParameter("senha");
 
-                if (email == null || email.isEmpty() || senha == null || senha.isEmpty()) {
-                    out.println("<script>alert('E-mail e senha são obrigatórios!');</script>");
-                } else {
-                    try {
-                        UsuarioDAO dao = new UsuarioDAO();
-                        Usuario usuario = dao.buscarPorEmail(email);
+        if (email != null && !email.isEmpty() && senha != null && !senha.isEmpty()) {
+            try {
+                UsuarioDAO dao = new UsuarioDAO();
+                Usuario usuario = dao.buscarPorEmail(email);
 
-                        if (usuario != null && usuario.getSenha().equals(senha)) {
-                            session.setAttribute("usuarioLogado", usuario);
-                            response.sendRedirect("../index.html");
-                            return;
-                        } else {
-                            out.println("<script>alert('E-mail ou senha incorretos!');</script>");
-                        }
-                    } catch (Exception e) {
-                        out.println("<script>alert('Erro no sistema. Por favor, tente novamente: ' + e);</script>");
-                        e.printStackTrace();
-                    }
+                if (usuario != null && usuario.getSenha().equals(senha)) {
+                    // Cria o cookie de sessão
+                    Cookie cookieSessao = new Cookie("idSessao", session.getId());
+                    cookieSessao.setMaxAge(60 * 60 * 24);
+                    cookieSessao.setPath("/");
+                    response.addCookie(cookieSessao);
+                    
+                    // Armazena o usuário na sessão
+                    session.setAttribute("usuarioLogado", usuario);
+                    response.sendRedirect("../index.html");
+                    return;
                 }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        %>
+        }
+        response.sendRedirect("loginUsuario.jsp?erro=1");
+    }
+%>
     </body>
 </html>

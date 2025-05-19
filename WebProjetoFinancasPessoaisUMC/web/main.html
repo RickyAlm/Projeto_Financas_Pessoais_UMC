@@ -3,19 +3,18 @@
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
 -->
+
 <html>
     <head>
-        <title>Sistema</title>
+        <title>Conteúdo Principal</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="assets/js/redirecionar.js"></script>
     </head>
-    <frameset cols="250, *" noresize="noresize" frameborder="0">
-        <frame src="menu.jsp" name="menu_page"/>
-        <frame src="main.html" name="main_page"/>         
-        <noframes>
-            <body>
-                <div>Seu Browser não suporta frames.</div>
-            </body>
-        </noframes>
-    </frameset>
+    <body onload="ctrlRedirecionar.redirecionarURL(true)">
+        <div class="container mt-4">
+            <h2>Bem-vindo ao Sistema</h2>
+            <p>Selecione uma opção no menu lateral para começar.</p>
+        </div>
+    </body>
 </html>
