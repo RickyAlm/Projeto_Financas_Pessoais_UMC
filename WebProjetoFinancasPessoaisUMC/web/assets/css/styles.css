@@ -1,4 +1,12 @@
-/* styles.css */
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 15 de mai. de 2025, 11:10:45
+    Author     : Henrique Vieira de Almeida
+*/
+
 :root {
   --cor-principal: #009896;
   --verde-escuro: #008451;
@@ -270,4 +278,69 @@ input[type="date"] {
 
 .form-row .div-campo-input {
   flex: 1;
+}
+
+/* Adições ao styles.css */
+
+.profile-card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 152, 150, 0.15);
+    overflow: hidden;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+}
+
+.profile-card:hover {
+    box-shadow: 0 15px 35px rgba(0, 152, 150, 0.25);
+}
+
+.profile-body {
+    padding: 30px;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    border: none;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+}
+
+.btn-delete:hover {
+    background-color: #bb2d3b;
+    transform: translateY(-2px);
+}
+
+.btn-logout {
+    background-color: var(--azul-escuro);
+    border: none;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+}
+
+.btn-logout:hover {
+    background-color: #0d426e;
+    transform: translateY(-2px);
+}
+
+.modal-content {
+    border-radius: 15px;
+}
+
+.modal-header {
+    border-bottom: 1px solid #eee;
+}
+
+.modal-footer {
+    border-top: 1px solid #eee;
 }

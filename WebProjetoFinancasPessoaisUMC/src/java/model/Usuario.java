@@ -23,7 +23,6 @@ public class Usuario {
     private LocalDate dataNascimento;
     private String senha;
     private TipoUsuario tipo = TipoUsuario.comum;
-    private BigDecimal rendaMensal;
     private Timestamp dataCriacao;
     private boolean ativo = true;
 
@@ -38,8 +37,8 @@ public class Usuario {
 
     public Usuario(
         int idUsuario, String nome, String sobrenome, String email, String telefone,
-        LocalDate dataNascimento, String senha, TipoUsuario tipo,
-        BigDecimal rendaMensal, Timestamp dataCriacao, boolean ativo
+        LocalDate dataNascimento, String senha, TipoUsuario tipo, 
+        Timestamp dataCriacao, boolean ativo
     ) {
         this.idUsuario = idUsuario;
         this.nome = nome;
@@ -49,7 +48,6 @@ public class Usuario {
         this.dataNascimento = dataNascimento;
         this.senha = senha;
         this.tipo = tipo;
-        this.rendaMensal = rendaMensal;
         this.dataCriacao = dataCriacao;
         this.ativo = ativo;
     }
@@ -118,14 +116,6 @@ public class Usuario {
         this.tipo = tipo;
     }
 
-    public BigDecimal getRendaMensal() {
-        return rendaMensal;
-    }
-
-    public void setRendaMensal(BigDecimal rendaMensal) {
-        this.rendaMensal = rendaMensal;
-    }
-
     public Timestamp getDataCriacao() {
         return dataCriacao;
     }
@@ -142,6 +132,10 @@ public class Usuario {
         this.ativo = ativo;
     }
 
+    public boolean isAdmin() {
+        return this.tipo != null && this.tipo.equals(TipoUsuario.admin);
+    }
+    
     @Override
     public String toString() {
         return "Usuario{" +
@@ -152,7 +146,6 @@ public class Usuario {
                 ", telefone='" + telefone + '\'' +
                 ", dataNascimento=" + dataNascimento +
                 ", tipo=" + tipo +
-                ", rendaMensal=" + rendaMensal +
                 ", dataCriacao=" + dataCriacao +
                 ", ativo=" + ativo +
                 '}';

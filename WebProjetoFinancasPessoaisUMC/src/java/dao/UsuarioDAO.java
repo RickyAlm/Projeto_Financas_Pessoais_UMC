@@ -18,8 +18,8 @@ import java.util.List;
 public class UsuarioDAO {
     
     public boolean inserir(Usuario p_usuario) throws ClassNotFoundException {
-        String sql = "INSERT INTO usuario (nome, sobrenome, email, telefone, data_nascimento, senha, tipo, renda_mensal, data_criacao, ativo) " +
-                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO usuario (nome, sobrenome, email, telefone, data_nascimento, senha, tipo, data_criacao, ativo) " +
+                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
         try (Connection conexao = ConectaDB.conectar();
             PreparedStatement ps = conexao.prepareStatement(sql)) {
@@ -31,9 +31,8 @@ public class UsuarioDAO {
             ps.setDate(5, Date.valueOf(p_usuario.getDataNascimento()));
             ps.setString(6, p_usuario.getSenha());
             ps.setString(7, p_usuario.getTipo().toString());
-            ps.setBigDecimal(8, p_usuario.getRendaMensal());
-            ps.setTimestamp(9, p_usuario.getDataCriacao());
-            ps.setBoolean(10, p_usuario.isAtivo());
+            ps.setTimestamp(8, p_usuario.getDataCriacao());
+            ps.setBoolean(9, p_usuario.isAtivo());
             
             return ps.executeUpdate() > 0;
         } catch(SQLException ex) {
@@ -62,7 +61,6 @@ public class UsuarioDAO {
                     usuario.setDataNascimento(rs.getDate("data_nascimento").toLocalDate());
                     usuario.setSenha(rs.getString("senha"));
                     usuario.setTipo(Usuario.TipoUsuario.valueOf(rs.getString("tipo")));
-                    usuario.setRendaMensal(rs.getBigDecimal("renda_mensal"));
                     usuario.setDataCriacao(rs.getTimestamp("data_criacao"));
                     usuario.setAtivo(rs.getBoolean("ativo"));
                 }
@@ -83,12 +81,12 @@ public class UsuarioDAO {
     
     public List<Usuario> consultarTodos() throws ClassNotFoundException {
         List<Usuario> lista = new ArrayList<>();
-        String sql = "SELECT * FROM usuario";
-        
+        String sql = "SELECT * FROM usuario ORDER BY nome";
+
         try (Connection conexao = ConectaDB.conectar();
              PreparedStatement ps = conexao.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
-            
+
             while (rs.next()) {
                 Usuario usuario = new Usuario();
                 usuario.setIdUsuario(rs.getInt("id_usuario"));
@@ -97,21 +95,30 @@ public class UsuarioDAO {
                 usuario.setEmail(rs.getString("email"));
                 usuario.setTelefone(rs.getString("telefone"));
                 usuario.setDataNascimento(rs.getDate("data_nascimento").toLocalDate());
-                usuario.setSenha(rs.getString("senha"));
-                usuario.setTipo(Usuario.TipoUsuario.valueOf(rs.getString("tipo")));
-                usuario.setRendaMensal(rs.getBigDecimal("renda_mensal"));
+
+                // Correção para o tipo de usuário
+                String tipoStr = rs.getString("tipo");
+                try {
+                    usuario.setTipo(Usuario.TipoUsuario.valueOf(tipoStr.toLowerCase()));
+                } catch (IllegalArgumentException e) {
+                    // Valor padrão caso o tipo não seja reconhecido
+                    usuario.setTipo(Usuario.TipoUsuario.comum);
+                    System.err.println("Tipo de usuário desconhecido: " + tipoStr);
+                }
+
                 usuario.setDataCriacao(rs.getTimestamp("data_criacao"));
                 usuario.setAtivo(rs.getBoolean("ativo"));
-                
+
                 lista.add(usuario);
             }
-        } catch(SQLException ex) {
-            System.out.println("Erro SQL ao consultar todos: " + ex);
+        } catch (SQLException ex) {
+            System.err.println("Erro ao consultar usuários: " + ex.getMessage());
+            throw new ClassNotFoundException("Erro ao acessar o banco de dados", ex);
         }
-        
-        return lista.isEmpty() ? null : lista;
+
+        return lista;
     }
-    
+
     public Usuario consultarPorId(int id) throws ClassNotFoundException {
         String sql = "SELECT * FROM usuario WHERE id_usuario = ?";
         Usuario usuario = null;
@@ -132,7 +139,6 @@ public class UsuarioDAO {
                     usuario.setDataNascimento(rs.getDate("data_nascimento").toLocalDate());
                     usuario.setSenha(rs.getString("senha"));
                     usuario.setTipo(Usuario.TipoUsuario.valueOf(rs.getString("tipo")));
-                    usuario.setRendaMensal(rs.getBigDecimal("renda_mensal"));
                     usuario.setDataCriacao(rs.getTimestamp("data_criacao"));
                     usuario.setAtivo(rs.getBoolean("ativo"));
                 }
@@ -146,7 +152,7 @@ public class UsuarioDAO {
     
     public boolean alterar(Usuario p_usuario) throws ClassNotFoundException {
         String sql = "UPDATE usuario SET nome = ?, sobrenome = ?, email = ?, telefone = ?, " +
-                    "data_nascimento = ?, senha = ?, tipo = ?, renda_mensal = ?, ativo = ? " +
+                    "data_nascimento = ?, senha = ?, tipo = ?, ativo = ? " +
                     "WHERE id_usuario = ?";
         
         try (Connection conexao = ConectaDB.conectar();
@@ -159,9 +165,8 @@ public class UsuarioDAO {
             ps.setDate(5, Date.valueOf(p_usuario.getDataNascimento()));
             ps.setString(6, p_usuario.getSenha());
             ps.setString(7, p_usuario.getTipo().toString());
-            ps.setBigDecimal(8, p_usuario.getRendaMensal());
-            ps.setBoolean(9, p_usuario.isAtivo());
-            ps.setInt(10, p_usuario.getIdUsuario());
+            ps.setBoolean(8, p_usuario.isAtivo());
+            ps.setInt(9, p_usuario.getIdUsuario());
             
             return ps.executeUpdate() > 0;
         } catch(SQLException ex) {
@@ -191,5 +196,80 @@ public class UsuarioDAO {
             return usuario;
         }
         return null;
+    }
+    
+    public boolean verificarSenha(int idUsuario, String senha) throws ClassNotFoundException {
+        String sql = "SELECT senha FROM usuario WHERE id_usuario = ?";
+
+        try (Connection conexao = ConectaDB.conectar();
+             PreparedStatement ps = conexao.prepareStatement(sql)) {
+
+            ps.setInt(1, idUsuario);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getString("senha").equals(senha);
+                }
+            }
+        } catch(SQLException ex) {
+            System.out.println("Erro SQL ao verificar senha: " + ex);
+        }
+
+        return false;
+    }
+
+    public boolean atualizarDadosBasicos(Usuario usuario) throws ClassNotFoundException {
+        String sql = "UPDATE usuario SET nome = ?, sobrenome = ?, email = ?, telefone = ?, data_nascimento = ? WHERE id_usuario = ?";
+
+        try (Connection conexao = ConectaDB.conectar();
+             PreparedStatement ps = conexao.prepareStatement(sql)) {
+
+            ps.setString(1, usuario.getNome());
+            ps.setString(2, usuario.getSobrenome());
+            ps.setString(3, usuario.getEmail());
+            ps.setString(4, usuario.getTelefone());
+            ps.setDate(5, Date.valueOf(usuario.getDataNascimento()));
+            ps.setInt(6, usuario.getIdUsuario());
+
+            return ps.executeUpdate() > 0;
+        } catch(SQLException ex) {
+            System.out.println("Erro SQL ao atualizar dados básicos: " + ex);
+            return false;
+        }
+    }
+
+    public boolean atualizarSenha(int idUsuario, String novaSenha) throws ClassNotFoundException {
+        String sql = "UPDATE usuario SET senha = ? WHERE id_usuario = ?";
+
+        try (Connection conexao = ConectaDB.conectar();
+             PreparedStatement ps = conexao.prepareStatement(sql)) {
+
+            ps.setString(1, novaSenha);
+            ps.setInt(2, idUsuario);
+
+            return ps.executeUpdate() > 0;
+        } catch(SQLException ex) {
+            System.out.println("Erro SQL ao atualizar senha: " + ex);
+            return false;
+        }
+    }
+    
+    public boolean isAdmin(int idUsuario) throws ClassNotFoundException {
+        String sql = "SELECT tipo FROM usuario WHERE id_usuario = ?";
+
+        try (Connection conexao = ConectaDB.conectar();
+             PreparedStatement ps = conexao.prepareStatement(sql)) {
+
+            ps.setInt(1, idUsuario);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return Usuario.TipoUsuario.valueOf(rs.getString("tipo")) == Usuario.TipoUsuario.admin;
+                }
+            }
+        } catch(SQLException ex) {
+            System.out.println("Erro SQL ao verificar admin: " + ex);
+        }
+        return false;
     }
 }
