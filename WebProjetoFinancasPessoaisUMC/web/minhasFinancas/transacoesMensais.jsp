@@ -1,7 +1,7 @@
 <%-- 
     Document   : transacoesMensais
     Created on : 18 de mai. de 2025, 23:16:04
-    Author     : Rick
+    Author     : Henrique Vieira de Almeida
 --%>
 
 <!DOCTYPE html>
@@ -9,6 +9,7 @@
 <%
     // Obter o mês selecionado da sessão
     String mesAno = (String) session.getAttribute("mesSelecionado");
+    int mesNumero = 0;
     
     // Se veio por POST, atualiza a sessão
     if (request.getMethod().equalsIgnoreCase("POST")) {
@@ -22,7 +23,7 @@
     if (mesAno != null && !mesAno.isEmpty()) {
         String[] partes = mesAno.split("-");
         ano = partes[0];
-        int mesNumero = Integer.parseInt(partes[1]);
+        mesNumero = Integer.parseInt(partes[1]);
         
         String[] meses = {"Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
                          "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"};
