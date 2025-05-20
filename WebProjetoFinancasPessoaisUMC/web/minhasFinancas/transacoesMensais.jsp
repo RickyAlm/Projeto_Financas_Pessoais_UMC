@@ -60,50 +60,13 @@
 
         <!-- Lista de transações -->
         <div class="transactions-list">
-            <div class="add-transaction">
+            <div class="add-transaction" id="addTransactionBtn">
                 <i class="fas fa-plus"></i>
                 <span>Adicionar Transação</span>
             </div>
 
-            <!-- Exemplo de transação (receita) -->
-<!--            <div class="transaction-item">
-                <div class="transaction-info">
-                    <div class="transaction-name">Salário</div>
-                    <span class="transaction-category">Salário</span>
-                </div>
-                <div class="transaction-amount income">+ R$ 3.500,00</div>
-                <div class="transaction-actions">
-                    <i class="fas fa-pen"></i>
-                    <i class="fas fa-trash"></i>
-                </div>
-            </div>
-
-             Exemplo de transação (despesa) 
-            <div class="transaction-item">
-                <div class="transaction-info">
-                    <div class="transaction-name">Aluguel</div>
-                    <span class="transaction-category">Moradia</span>
-                </div>
-                <div class="transaction-amount expense">- R$ 1.200,00</div>
-                <div class="transaction-actions">
-                    <i class="fas fa-pen"></i>
-                    <i class="fas fa-trash"></i>
-                </div>
-            </div>
-
-             Exemplo de transação (despesa) 
-            <div class="transaction-item">
-                <div class="transaction-info">
-                    <div class="transaction-name">Supermercado</div>
-                    <span class="transaction-category">Alimentação</span>
-                </div>
-                <div class="transaction-amount expense">- R$ 450,00</div>
-                <div class="transaction-actions">
-                    <i class="fas fa-pen"></i>
-                    <i class="fas fa-trash"></i>
-                </div>
-            </div>
-        </div>-->
+            <!-- As transações serão inseridas aqui dinamicamente -->
+        </div>
 
         <!-- Estatísticas mensais -->
         <div class="monthly-stats">
@@ -135,26 +98,112 @@
         </div>
     </div>
 
-<!--    <script>
-        // Resgata o parâmetro do mês da URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const mesAno = urlParams.get('mes');
+    <!-- Modal para adicionar transação -->
+    <div class="modal-overlay" id="transactionModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2>Adicionar Transação</h2>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="transactionName">Nome da Transação</label>
+                    <input type="text" id="transactionName" placeholder="Ex: Salário, Aluguel, Supermercado">
+                </div>
+                
+                <div class="form-group">
+                    <label for="transactionValue">Valor</label>
+                    <input type="number" id="transactionValue" placeholder="R$ 0,00" step="0.01">
+                </div>
+                
+                <div class="form-group">
+                    <label for="transactionType">Tipo</label>
+                    <select id="transactionType">
+                        <option value="">Selecione o tipo</option>
+                        <option value="income">Receita</option>
+                        <option value="expense">Despesa</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="transactionCategory">Categoria</label>
+                    <select id="transactionCategory">
+                        <option value="">Selecione a categoria</option>
+                        <optgroup label="Receitas">
+                            <option value="salary">Salário</option>
+                            <option value="freelance">Freelance</option>
+                            <option value="investment">Investimentos</option>
+                            <option value="other_income">Outras receitas</option>
+                        </optgroup>
+                        <optgroup label="Despesas">
+                            <option value="housing">Moradia</option>
+                            <option value="food">Alimentação</option>
+                            <option value="transport">Transporte</option>
+                            <option value="health">Saúde</option>
+                            <option value="education">Educação</option>
+                            <option value="leisure">Lazer</option>
+                            <option value="other_expense">Outras despesas</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-cancel" id="cancelBtn">Cancelar</button>
+                <button class="btn btn-save" id="saveBtn">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Controle do modal
+        const modal = document.getElementById('transactionModal');
+        const addTransactionBtn = document.getElementById('addTransactionBtn');
+        const cancelBtn = document.getElementById('cancelBtn');
         
-        if (mesAno) {
-            // Converte o parâmetro para um formato legível
-            const [ano, mes] = mesAno.split('-');
-            const meses = [
-                'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
-                'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
-            ];
-            const mesNome = meses[parseInt(mes) - 1];
-            
-            // Atualiza o título da página
-            document.getElementById('month-title').textContent = `Transações de ${mesNome} ${ano}`;
-            
-            // Aqui você faria uma requisição para buscar os dados do mês específico
-            // e preencheria as transações e estatísticas
+        // Função para abrir o modal
+        function openModal() {
+            modal.classList.add('active');
         }
-    </script>-->
+        
+        // Função para fechar o modal
+        function closeModal() {
+            modal.classList.remove('active');
+            // Limpar os campos ao fechar
+            document.getElementById('transactionName').value = '';
+            document.getElementById('transactionValue').value = '';
+            document.getElementById('transactionType').value = '';
+            document.getElementById('transactionCategory').value = '';
+        }
+        
+        // Event listeners
+        addTransactionBtn.addEventListener('click', openModal);
+        cancelBtn.addEventListener('click', closeModal);
+        
+        // Fechar modal ao clicar fora
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Lógica para salvar a transação (a ser implementada)
+        document.getElementById('saveBtn').addEventListener('click', function() {
+            // Aqui você implementaria a lógica para salvar a transação
+            const name = document.getElementById('transactionName').value;
+            const value = document.getElementById('transactionValue').value;
+            const type = document.getElementById('transactionType').value;
+            const category = document.getElementById('transactionCategory').value;
+            
+            if (!name || !value || !type || !category) {
+                alert('Por favor, preencha todos os campos!');
+                return;
+            }
+            
+            // Exemplo de como você poderia adicionar a transação à lista
+            // addTransactionToList(name, value, type, category);
+            
+            // Fechar o modal após salvar
+            closeModal();
+        });
+    </script>
 </body>
 </html>
