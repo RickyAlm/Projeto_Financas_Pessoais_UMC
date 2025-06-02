@@ -20,7 +20,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 }
 
 .transactions-container {
-    max-width: 800px;
+    width: 800px;
     margin: 30px auto;
     padding: 20px;
     background-color: white;
@@ -111,6 +111,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 }
 
 .transaction-name {
+    color: var(--azul-escuro);
     font-weight: 600;
     margin-bottom: 5px;
 }
@@ -156,11 +157,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     color: var(--despesa);
 }
 
+.budget-input label {
+    font-size: 19px;
+}
+
 .monthly-stats {
     margin-top: 40px;
     padding: 20px;
     background-color: var(--fundo-cinza);
     border-radius: 10px;
+}
+
+.monthly-stats h2 {
+    color: var(--azul-escuro);
 }
 
 .stats-grid {
@@ -226,130 +235,49 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     border-radius: 5px;
 }
 
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-}
-
-.modal-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.modal-container {
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    max-width: 450px;
-    padding: 25px;
-    transform: translateY(-20px);
-    transition: all 0.3s ease;
-}
-
-.modal-overlay.active .modal-container {
-    transform: translateY(0);
-}
-
-.modal-header {
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #eee;
-}
-
-.modal-header h2 {
-    margin: 0;
+.edit-budget {
+    margin-left: 10px;
     color: #194E72;
-    font-size: 22px;
-}
-
-.modal-body {
-    margin-bottom: 25px;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: #194E72;
-}
-
-.form-group input,
-.form-group select {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding: 12px;
-    border: 2px solid #e9ecef;
-    border-radius: 8px;
+    cursor: pointer;
     font-size: 16px;
-    transition: all 0.3s;
+    vertical-align: middle;
+}
+.edit-budget:hover {
+    color: #009896;
 }
 
-.form-group input {
-    width: 94%;
+.input-with-icon {
+    position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
-.form-group select {
-    width: 100%;
+.input-with-icon .edit-budget {
+    position: absolute;
+    right: 12px;
+    top: 55px;
+    transform: translateY(-50%);
+    color: #194E72;
+    cursor: pointer;
+    font-size: 16px;
+    transition: color 0.2s;
+    z-index: 2;
 }
 
-.form-group input:focus,
-.form-group select:focus {
-    border-color: #009896;
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(0, 152, 150, 0.1);
+.input-with-icon .edit-budget:hover {
+    color: #009896;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"],
+input[type="tel"],
+input[type="date"] {
+    padding: 12px !important;
 }
 
 .modal-footer {
-    display: flex;
-    justify-content: flex-end;
-    gap: 15px;
-}
-
-.btn {
-    padding: 12px 20px;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s;
-    border: none;
-}
-
-.btn-cancel {
-    background-color: #f1f1f1;
-    color: #6c757d;
-}
-
-.btn-cancel:hover {
-    background-color: #e2e2e2;
-}
-
-.btn-save {
-    background-color: #009896;
-    color: white;
-}
-
-.btn-save:hover {
-    background-color: #008451;
-}
-
-.btn-cancel,
-.btn-save {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-top: 0px !important;
 }
 
 @media (max-width: 768px) {

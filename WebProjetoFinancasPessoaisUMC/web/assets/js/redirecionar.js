@@ -15,10 +15,10 @@ const ctrlRedirecionar = (() => {
 
         if (!idSessao) {
             if (ehArquivoRaiz) {
-                window.top.location.href = "loginUsuario/index.html";
+                window.top.location.href = "loginUsuario/index.jsp";
                 return;
             }
-            window.top.location.href = "../loginUsuario/index.html";
+            window.top.location.href = "../loginUsuario/index.jsp";
         } else {
             console.log("idSessao encontrado:", idSessao);
         }

@@ -22,7 +22,7 @@
                     + "  icon: 'error',"
                     + "  title: 'Acesso não autorizado',"
                     + "  text: 'Você precisa estar logado para acessar esta página',"
-                    + "}).then(() => { window.location.href = '../loginUsuario/index.html'; });"
+                    + "}).then(() => { window.location.href = '../loginUsuario/index.jsp'; });"
                     + "</script>");
                 return;
             }
@@ -53,7 +53,7 @@
                         + "  title: 'Conta excluída',"
                         + "  text: 'Sua conta foi excluída com sucesso',"
                         + "  showConfirmButton: true"
-                        + "}).then(() => { window.top.nem location.href = '../loginUsuario/index.html'; });"
+                        + "}).then(() => { window.top.nem location.href = '../loginUsuario/index.jsp'; });"
                         + "</script>");
                 } else {
                     out.println("<script>"

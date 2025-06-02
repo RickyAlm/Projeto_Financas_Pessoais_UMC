@@ -1,6 +1,6 @@
 package model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -15,10 +15,11 @@ public class Transacao {
     private int id_transacao;
     private int id_usuario;
     private int id_categoria;
-    private LocalDate data;
+    private LocalDateTime data;
     private double valor;
     private TipoTransacao tipo;
     private String mesAno;
+    private String nome;
     
     public enum TipoTransacao {
         receita, despesa
@@ -26,7 +27,7 @@ public class Transacao {
 
     public Transacao() {}
     
-    public Transacao(int id_transacao, int id_usuario, int id_categoria, LocalDate data, double valor, TipoTransacao tipo, String mesAno) {
+    public Transacao(int id_transacao, int id_usuario, int id_categoria, LocalDateTime data, double valor, TipoTransacao tipo, String mesAno) {
         this.id_transacao = id_transacao;
         this.id_usuario = id_usuario;
         this.id_categoria = id_categoria;
@@ -48,7 +49,7 @@ public class Transacao {
         return id_categoria;
     }
 
-    public LocalDate getData() {
+    public LocalDateTime getData() {
         return data;
     }
 
@@ -64,6 +65,10 @@ public class Transacao {
         return mesAno;
     }
 
+    public String getNome() {
+        return nome;
+    }
+    
     public void setId_transacao(int id_transacao) {
         this.id_transacao = id_transacao;
     }
@@ -76,7 +81,7 @@ public class Transacao {
         this.id_categoria = id_categoria;
     }
 
-    public void setData(LocalDate data) {
+    public void setData(LocalDateTime data) {
         this.data = data;
     }
 
@@ -90,5 +95,9 @@ public class Transacao {
 
     public void setMesAno(String mesAno) {
         this.mesAno = mesAno;
-    }   
+    }
+    
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 }

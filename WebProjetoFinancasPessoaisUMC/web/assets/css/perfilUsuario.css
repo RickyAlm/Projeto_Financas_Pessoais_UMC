@@ -21,6 +21,14 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+input[type="email"],
+input[type="password"],
+input[type="text"],
+input[type="tel"],
+input[type="date"] {
+    padding-left: 37px !important;
+}
+
 .main-content {
     margin-left: 0px;
     padding: 30px;

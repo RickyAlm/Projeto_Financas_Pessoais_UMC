@@ -30,7 +30,15 @@
             if (idSessao == null || session.isNew() || !session.getId().equals(idSessao) 
                     || session.getAttribute("usuarioLogado") == null) {
                 session.invalidate();
-                response.sendRedirect("loginUsuario/index.html");
+        %>
+<script>
+    if (window.top) {
+        window.top.location.href = '/WebProjetoFinancasPessoaisUMC/loginUsuario/index.jsp';
+    } else {
+        window.location.href = '/WebProjetoFinancasPessoaisUMC/loginUsuario/index.jsp';
+    }
+</script>
+<%
                 return;
             }
 

@@ -6,6 +6,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Created on : 18 de mai. de 2025, 20:18:20
     Author     : Henrique Vieira de Almeida
 */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
     --cor-principal: #009896;
@@ -19,11 +20,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 
 body {
     background-color: var(--fundo-cinza);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Poppins", sans-serif !important;
+    font-weight: 400 !important;
+    font-style: normal !important;
+    font-size: 15px !important;
     margin: 0;
     padding: 20px;
     min-height: 100vh;
     background-image: radial-gradient(circle at 10% 20%, rgba(0, 152, 150, 0.05) 0%, rgba(0, 152, 150, 0.05) 90%);
+}
+
+h1 {
+    font-size: 2rem !important;
 }
 
 .dashboard-container {
@@ -78,8 +86,7 @@ body {
     color: white;
     padding: 15px;
     text-align: center;
-    font-weight: 600;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .month-card-body {
@@ -113,7 +120,7 @@ body {
 .stat-label {
     font-size: 12px;
     color: #6c757d;
-    margin-top: 5px;
+    margin-top: 0px;
 }
 
 .current-month {

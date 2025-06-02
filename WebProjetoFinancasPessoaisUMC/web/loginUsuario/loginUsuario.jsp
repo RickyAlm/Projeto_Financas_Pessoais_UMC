@@ -12,6 +12,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login Usuário</title>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
     <body>
 <%
@@ -30,7 +31,7 @@
                     cookieSessao.setMaxAge(60 * 60 * 24);
                     cookieSessao.setPath("/");
                     response.addCookie(cookieSessao);
-                    
+
                     // Armazena o usuário na sessão
                     session.setAttribute("usuarioLogado", usuario);
                     response.sendRedirect("../index.html");
@@ -40,7 +41,8 @@
                 e.printStackTrace();
             }
         }
-        response.sendRedirect("loginUsuario.jsp?erro=1");
+        response.sendRedirect("index.jsp?erro=1");
+        return;
     }
 %>
     </body>

@@ -4,9 +4,8 @@
     Author     : Henrique Vieira de Almeida
 --%>
 
-<%@page import="model.Usuario"%>
 <%@page import="dao.UsuarioDAO"%>
-<%@page import="java.math.BigDecimal"%>
+<%@page import="model.Usuario"%>
 <%@page import="java.time.LocalDate"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -40,6 +39,13 @@
                 }
                 else {
                     try {
+                        UsuarioDAO dao = new UsuarioDAO();
+                        Usuario existente = dao.buscarPorEmail(email);
+                        if (existente != null) {
+                            response.sendRedirect("index.html?erro=email");
+                            return;
+                        }
+
                         Usuario usuario = new Usuario();
                         usuario.setNome(nome);
                         usuario.setSobrenome(sobrenome);
@@ -52,7 +58,7 @@
                         boolean sucesso = usuarioDAO.inserir(usuario);
 
                         if (sucesso) {
-                            response.sendRedirect("../loginUsuario/index.html");
+                            response.sendRedirect("../loginUsuario/index.jsp");
                             return;
                         } else {
                             out.println("<script>alert('Erro ao cadastrar usuário!');</script>");

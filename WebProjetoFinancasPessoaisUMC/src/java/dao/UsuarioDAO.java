@@ -101,14 +101,12 @@ public class UsuarioDAO {
                 try {
                     usuario.setTipo(Usuario.TipoUsuario.valueOf(tipoStr.toLowerCase()));
                 } catch (IllegalArgumentException e) {
-                    // Valor padrão caso o tipo não seja reconhecido
                     usuario.setTipo(Usuario.TipoUsuario.comum);
                     System.err.println("Tipo de usuário desconhecido: " + tipoStr);
                 }
 
                 usuario.setDataCriacao(rs.getTimestamp("data_criacao"));
                 usuario.setAtivo(rs.getBoolean("ativo"));
-
                 lista.add(usuario);
             }
         } catch (SQLException ex) {
@@ -119,8 +117,71 @@ public class UsuarioDAO {
         return lista;
     }
 
+    public List<Usuario> consultarComFiltro(String status, String tipo, String busca) throws ClassNotFoundException {
+        List<Usuario> lista = new ArrayList<>();
+        StringBuilder sql = new StringBuilder("SELECT * FROM usuario WHERE 1=1");
+
+        if (!"todos".equalsIgnoreCase(status)) {
+            sql.append(" AND ativo = ?");
+        }
+        if (!"todos".equalsIgnoreCase(tipo)) {
+            sql.append(" AND tipo = ?");
+        }
+        if (busca != null && !busca.trim().isEmpty()) {
+            sql.append(" AND (LOWER(nome) LIKE ? OR LOWER(sobrenome) LIKE ? OR LOWER(email) LIKE ?)");
+        }
+        sql.append(" ORDER BY data_criacao DESC");
+
+        try (Connection conexao = ConectaDB.conectar();
+            PreparedStatement ps = conexao.prepareStatement(sql.toString())) {
+
+            int paramIndex = 1;
+            if (!"todos".equalsIgnoreCase(status)) {
+                ps.setBoolean(paramIndex++, "ativos".equalsIgnoreCase(status));
+            }
+            if (!"todos".equalsIgnoreCase(tipo)) {
+                ps.setString(paramIndex++, tipo);
+            }
+            if (busca != null && !busca.trim().isEmpty()) {
+                String buscaLike = "%" + busca.trim().toLowerCase() + "%";
+                ps.setString(paramIndex++, buscaLike);
+                ps.setString(paramIndex++, buscaLike);
+                ps.setString(paramIndex++, buscaLike);
+            }
+
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Usuario usuario = new Usuario();
+                    usuario.setIdUsuario(rs.getInt("id_usuario"));
+                    usuario.setNome(rs.getString("nome"));
+                    usuario.setSobrenome(rs.getString("sobrenome"));
+                    usuario.setEmail(rs.getString("email"));
+                    usuario.setTelefone(rs.getString("telefone"));
+                    usuario.setDataNascimento(rs.getDate("data_nascimento").toLocalDate());
+                    
+                    // Correção para o tipo de usuário
+                    String tipoStr = rs.getString("tipo");
+                    try {
+                        usuario.setTipo(Usuario.TipoUsuario.valueOf(tipoStr.toLowerCase()));
+                    } catch (IllegalArgumentException e) {
+                        usuario.setTipo(Usuario.TipoUsuario.comum);
+                        System.err.println("Tipo de usuário desconhecido: " + tipoStr);
+                    }
+                    
+                    usuario.setDataCriacao(rs.getTimestamp("data_criacao"));
+                    usuario.setAtivo(rs.getBoolean("ativo"));
+                    lista.add(usuario);
+                }
+            }
+        } catch (SQLException ex) {
+            System.err.println("Erro ao consultar usuários com filtro: " + ex.getMessage());
+            throw new ClassNotFoundException("Erro ao acessar o banco de dados", ex);
+        }
+        return lista;
+    }
+
     public Usuario consultarPorId(int id) throws ClassNotFoundException {
-        String sql = "SELECT * FROM usuario WHERE id_usuario = ?";
+        String sql = "SELECT * FROM usuario WHERE id_usuario = ? ORDER BY data_criacao DESC";
         Usuario usuario = null;
         
         try (Connection conexao = ConectaDB.conectar();

@@ -18,6 +18,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
         <link rel="stylesheet" href="../assets/css/styles.css">
         <link rel="stylesheet" href="../assets/css/perfilUsuario.css">
+        <link rel="stylesheet" href="../assets/css/fontePoppins.css">
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="../assets/js/logout.js"></script>
 <script>
@@ -57,13 +58,13 @@
         <%
             Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
             if (usuario == null) {
-                response.sendRedirect("../loginUsuario/index.html");
+                response.sendRedirect("../loginUsuario/index.jsp");
                 return;
             }
             
             if ("POST".equalsIgnoreCase(request.getMethod())) {
                 String acao = request.getParameter("acao");
-                
+
                 if ("atualizar".equals(acao)) {
                     usuario.setNome(request.getParameter("nome"));
                     usuario.setSobrenome(request.getParameter("sobrenome"));
@@ -77,7 +78,7 @@
                     if (sucesso) {
                         session.setAttribute("usuario", usuario);
                         out.println("<script>Swal.fire('Sucesso!', 'Dados atualizados com sucesso!', 'success');</script>");
-                        out.println("<script>window.top.frames['menu_page'].location.reload();</script>");
+                        out.println("<script>window.top.frames['menu_page'].location.href = '../menu.jsp?active=perfilUsuario';</script>");
                     } else {
                         out.println("<script>Swal.fire('Erro!', 'Falha ao atualizar dados!', 'error');</script>");
                     }
@@ -85,18 +86,22 @@
                     String senhaAtual = request.getParameter("senhaAtual");
                     String novaSenha = request.getParameter("novaSenha");
                     String confirmarSenha = request.getParameter("confirmarSenha");
-                    
+
                     if (!usuario.getSenha().equals(senhaAtual)) {
                         out.println("<script>Swal.fire('Erro!', 'Senha atual incorreta!', 'error');</script>");
+                    } else if (novaSenha == null || novaSenha.trim().isEmpty()) {
+                        out.println("<script>Swal.fire('Erro!', 'A nova senha não pode ser vazia!', 'error');</script>");
                     } else if (!novaSenha.equals(confirmarSenha)) {
                         out.println("<script>Swal.fire('Erro!', 'As novas senhas não coincidem!', 'error');</script>");
+                    } else if (senhaAtual.equals(novaSenha)) {
+                        out.println("<script>Swal.fire('Erro!', 'A nova senha não pode ser igual à senha atual!', 'error');</script>");
                     } else {
                         usuario.setSenha(novaSenha);
                         UsuarioDAO usuarioDAO = new UsuarioDAO();
                         boolean sucesso = usuarioDAO.alterar(usuario);
-                        
+
                         if (sucesso) {
-                            session.setAttribute("usuario", usuario);
+                            session.setAttribute("usuarioLogado", usuario);
                             out.println("<script>Swal.fire('Sucesso!', 'Senha alterada com sucesso!', 'success');</script>");
                         } else {
                             out.println("<script>Swal.fire('Erro!', 'Falha ao alterar senha!', 'error');</script>");
@@ -106,7 +111,7 @@
             }
         %>
         
-        <div class="main-content">
+        <div class="main-content poppins-regular">
             <div class="profile-container">
                 <div class="profile-card">
                     <div class="profile-header">
@@ -116,7 +121,7 @@
                     </div>
 
                     <form method="post" action="perfilUsuario.jsp">
-                        <input type="hidden" name="acao" value="atualizar">
+                        <input type="hidden" id="acaoInput" name="acao" value="atualizar">
                         <div class="profile-section">
                             <h4 class="section-title">Informações Pessoais</h4>
 
@@ -200,7 +205,7 @@
                                 </div>
                             </div>
                             
-                            <button type="button" class="btn btn-cadastro">
+                            <button type="submit" class="btn btn-cadastro" onclick="document.getElementById('acaoInput').value='alterar-senha'">
                                 <i class="fas fa-key"></i> Alterar Senha
                             </button>
                         </div>
@@ -209,7 +214,7 @@
                             <button id="btnLogout" type="button" class="btn btn-logout" onclick="ctrlLogout.logout()">
                                  <i class="fas fa-sign-out-alt"></i>
                              </button>
-                            <button type="submit" class="btn btn-cadastro">
+                            <button type="submit" class="btn btn-cadastro" onclick="document.getElementById('acaoInput').value='atualizar'">
                                 <i class="fas fa-save"></i> Atualizar Dados
                             </button>
                             <button type="button" class="btn btn-delete btn-delete-modal" onclick="confirmarExclusao()">
@@ -243,45 +248,5 @@
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<!--        <script>
-            (() => {
-                const btnLogout = document.getElementsById("btnLogout");
-                const btnCadastro = document.getElementsByClassName("btn-cadastro");
-                
-                function alterarSenha() {
-                    const form = document.createElement('form');
-                    form.method = 'POST';
-                    form.action = 'perfilUsuario.jsp';
-
-                    const acao = document.createElement('input');
-                    acao.type = 'hidden';
-                    acao.name = 'acao';
-                    acao.value = 'alterar-senha';
-                    form.appendChild(acao);
-
-                    const senhaAtual = document.createElement('input');
-                    senhaAtual.type = 'hidden';
-                    senhaAtual.name = 'senhaAtual';
-                    senhaAtual.value = document.getElementById('senhaAtual').value;
-                    form.appendChild(senhaAtual);
-
-                    const novaSenha = document.createElement('input');
-                    novaSenha.type = 'hidden';
-                    novaSenha.name = 'novaSenha';
-                    novaSenha.value = document.getElementById('novaSenha').value;
-                    form.appendChild(novaSenha);
-
-                    const confirmarSenha = document.createElement('input');
-                    confirmarSenha.type = 'hidden';
-                    confirmarSenha.name = 'confirmarSenha';
-                    confirmarSenha.value = document.getElementById('confirmarSenha').value;
-                    form.appendChild(confirmarSenha);
-
-                    document.body.appendChild(form);
-                    form.submit();
-                }
-            })();
-        </script>-->
-       
     </body>
 </html>

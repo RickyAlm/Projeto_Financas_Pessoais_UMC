@@ -18,7 +18,7 @@
 <head>
     <title>Saindo...</title>
     <script>
-        window.top.location.href = "<%= request.getContextPath() %>/loginUsuario/index.html";
+        window.top.location.href = "<%= request.getContextPath() %>/loginUsuario/index.jsp";
     </script>
 </head>
 <body>
