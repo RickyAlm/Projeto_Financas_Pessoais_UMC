@@ -47,12 +47,12 @@
                                 </a>
                             </li>
                             <% if (usuarioLogado.isAdmin()) { %>
-                            <li class="nav-item <%= "adminUsuarios".equals(activePage) ? "active" : "" %>">
-                                <a href="adminUsuario/adminUsuarios.jsp" target="main_page" class="nav-link">
-                                    <i class="fas fa-users-cog"></i>
-                                    <span>Lista de Usuários</span>
-                                </a>
-                            </li>
+                                <li class="nav-item <%= "adminUsuarios".equals(activePage) ? "active" : "" %>">
+                                    <a href="adminUsuario/adminUsuarios.jsp" target="main_page" class="nav-link">
+                                        <i class="fas fa-users-cog"></i>
+                                        <span>Lista de Usuários</span>
+                                    </a>
+                                </li>
                             <% } %>
                             <li class="nav-item">
                                 <a href="minhasFinancas/index.jsp" target="main_page" class="nav-link">
@@ -65,12 +65,6 @@
                                 <a href="loginUsuario/index.jsp" target="_top" class="nav-link">
                                     <i class="fas fa-user"></i>
                                     <span>Meu Perfil</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="loginUsuario/index.jsp" target="_top" class="nav-link">
-                                    <i class="fas fa-users-cog"></i>
-                                    <span>Lista de Usuários</span>
                                 </a>
                             </li>
                             <li class="nav-item">
