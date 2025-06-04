@@ -54,6 +54,22 @@
 </script>
     </head>
         <body onload="ctrlRedirecionar.redirecionarURL(true)">
+        <%! 
+            public static String md5(String input) {
+                try {
+                    java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
+                    byte[] array = md.digest(input.getBytes("UTF-8"));
+                    StringBuilder sb = new StringBuilder();
+                    for (byte b : array) {
+                        sb.append(String.format("%02x", b & 0xff));
+                    }
+                    return sb.toString();
+                } catch (Exception e) {
+                    return null;
+                }
+            }
+        %>
+
         <%
             Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
             if (usuario == null) {
@@ -86,16 +102,20 @@
                     String novaSenha = request.getParameter("novaSenha");
                     String confirmarSenha = request.getParameter("confirmarSenha");
 
-                    if (!usuario.getSenha().equals(senhaAtual)) {
+                    String senhaAtualMD5 = md5(senhaAtual);
+                    String novaSenhaMD5 = md5(novaSenha);
+                    String confirmarSenhaMD5 = md5(confirmarSenha);
+
+                    if (!usuario.getSenha().equals(senhaAtualMD5)) {
                         out.println("<script>Swal.fire('Erro!', 'Senha atual incorreta!', 'error');</script>");
                     } else if (novaSenha == null || novaSenha.trim().isEmpty()) {
                         out.println("<script>Swal.fire('Erro!', 'A nova senha não pode ser vazia!', 'error');</script>");
-                    } else if (!novaSenha.equals(confirmarSenha)) {
+                    } else if (!novaSenhaMD5.equals(confirmarSenhaMD5)) {
                         out.println("<script>Swal.fire('Erro!', 'As novas senhas não coincidem!', 'error');</script>");
-                    } else if (senhaAtual.equals(novaSenha)) {
+                    } else if (senhaAtualMD5.equals(novaSenhaMD5)) {
                         out.println("<script>Swal.fire('Erro!', 'A nova senha não pode ser igual à senha atual!', 'error');</script>");
                     } else {
-                        usuario.setSenha(novaSenha);
+                        usuario.setSenha(novaSenhaMD5);
                         UsuarioDAO usuarioDAO = new UsuarioDAO();
                         boolean sucesso = usuarioDAO.alterar(usuario);
 
@@ -211,8 +231,8 @@
 
                         <div class="profile-actions">
                             <button id="btnLogout" type="button" class="btn btn-logout" onclick="ctrlLogout.logout()">
-                                 <i class="fas fa-sign-out-alt"></i>
-                             </button>
+                                <i class="fas fa-sign-out-alt"></i>
+                            </button>
                             <button type="submit" class="btn btn-cadastro" onclick="document.getElementById('acaoInput').value='atualizar'">
                                 <i class="fas fa-save"></i> Atualizar Dados
                             </button>
