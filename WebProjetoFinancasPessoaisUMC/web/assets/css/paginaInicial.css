@@ -1,0 +1,342 @@
+* {margin: 0;padding: 0;box-sizing: border-box;}
+
+:root {
+--cor-principal: #009896;
+  --verde-escuro: #008451;
+  --verde-muito-escuro: #0C5741;
+  --azul-escuro: #194E72;
+  --azul-medio: #006996;
+  --verde-claro: #4CE6B5;
+  --fundo-cinza: #f5f7fa;
+}
+
+body {
+  background: url(../img/imagens_fundo/Pagina-inicial---Sem-margem--1920x1080.png) center/cover no-repeat;
+  background-color: #4CE6B5;
+  min-height: 100vh;
+}
+
+.meuBolso-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+
+}
+
+.logo-meuBolso {
+  width: 28%; 
+  height: 20px; 
+  max-width: 100%; 
+  display: block;
+}
+
+.setinha {
+  width: 55px;
+  margin: 0 auto;
+  animation: flutuar 2s ease-in-out infinite;
+}
+
+.meuBolso-top p {
+  color: white;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  text-align: start;
+  line-height: 1.2;
+}
+
+.btn-login {
+  padding: 10px;
+  width: 300px;
+  margin-left: 5px
+}
+
+.login {
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  font-size: clamp(1.5rem, 5vw, 1.8rem);
+  transition: all 0.3s ease;
+  border-radius: 20px;
+}
+
+.meuBolso-top button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.meuBolso-top div{
+  margin: 30px auto;
+  margin-top: 50px;
+}
+
+.div-ancora {
+  margin-top: 90px !important;
+}
+
+.cards-container {
+  background-color: white;
+  border-radius: 50px 50px 0 0;
+  padding-bottom: 50px;
+
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cards-container h2 {
+  font-size: clamp(2rem, 8vw, 5.5rem);
+  color: var(--cor-principal);
+  text-align: center;
+  padding: 40px 0;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+.card {
+  width: 100%;
+  max-width: 757px;
+  height: auto;
+  min-height: 310px;
+  font-size: clamp(1rem, 2vw, 1.7rem);
+  text-align: center;
+  color: var(--cor-principal);
+  margin: 0 auto;
+  padding: 20px;
+  border: none;
+  border-radius: 20px;
+
+  p{
+    color: var(--azul-escuro);
+  }
+}
+
+.card-geral {
+  width: 100%;
+  height: 200px;
+  border-radius: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 20px;
+  transition: all ease-in-out .2s;
+  box-shadow: 0 7px 13px 0 rgba(0, 0, 0, 0.57);
+}
+
+.card-geral:hover{
+  transform: scale(1.05);
+  box-shadow: 0 9px 15px 0 rgba(0, 0, 0, 0.60);
+}
+
+.card-geral img {
+  width: 50px;
+  max-width: 100%;
+}
+
+.card-geral p {
+  color: white;
+  font-size: clamp(0.9rem, 2vw, 1.5rem);
+  margin-top: 10px;
+}
+
+.card1{
+  background-image: url(../img/imagens_fundo/imagem_fundo_card_1.png);
+  background-position: center;
+  background-size: cover;
+}
+
+.card2{
+  background-image: url(../img/imagens_fundo/imagem_fundo_card_2.png);
+  background-position: center;
+  background-size: cover;
+}
+
+.card3{
+  background-image: url(../img/imagens_fundo/imagem_fundo_card_3.png);
+  background-position: center;
+  background-size: cover;
+}
+
+.card4{
+  background-image: url(../img/imagens_fundo/imagem_fundo_card_4.png);
+  background-position: center;
+  background-size: cover;
+}
+
+.p-text-card{
+  text-align: center;
+  font-size: 22px;
+  color: var(--azul-medio);
+}
+
+
+/* Aqui tu pode ver qual seria melhor no deixar no site */
+
+/* .btn-primary {
+  background: linear-gradient(to left, var(--cor-principal), var(--azul-medio));
+  border-color: var(--azul-escuro);
+  border-radius: 20px;  
+}
+ */
+
+.btn-primary {
+  background: linear-gradient(to right, var(--cor-principal), var(--azul-medio), var(--cor-principal));
+  background-size: 200% 100%;
+  background-position: right bottom;
+  border-color: var(--cor-principal);
+  border-radius: 20px;
+  transition: background-position .3s ease, color .3s ease !important;
+}
+
+.btn-primary:hover {
+  background-position: left bottom;
+}
+
+.btn-fundo{
+  background: linear-gradient(to right, var(--cor-principal), var(--azul-medio));
+  border: none;
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+  width: 25%;
+
+  font-size: clamp(16px, 2vw + 10px, 30px);
+
+  transition: all 0.3s;
+}
+
+.btn-fundo:hover{
+  color: white;
+  background: linear-gradient(to right, var(--cor-principal), var(--azul-escuro));
+  transform: translateY(-2px);
+}
+
+
+@media (min-width: 768px) {  
+  .logo-meuBolso {
+    width: 35%; 
+    height: 35%; 
+    max-width: 100%; 
+    display: block;
+  }
+
+  .meuBolso-top {
+    align-items: flex-start;
+    text-align: left;
+    padding-left: 20px;
+  }
+  
+  .meuBolso-top p {
+    text-align: start;
+  }
+}
+
+@media (min-width: 992px) {
+  body{
+    background-image: url(../img/imagens_fundo/Pagina-inicial---1-com-margem-2500x1500.png);
+    background-position: center;
+    background-size: cover;
+  }
+
+  .meuBolso-top div{
+    margin: 10px auto;
+  }
+
+  .p-text-card{
+    font-size: 25px;
+  }
+
+  .cards {
+    padding: 0 40px;
+  }
+  .btn-fundo{
+    width: 40%;
+    font-size: 25px;
+  }
+  
+}
+
+@media(max-width: 992px){
+  .p-text{
+    font-size: 15px;
+  }
+  .btn-fundo{
+    width: 40%;
+    font-size: 20px;
+  }
+}
+@media (max-width: 767px) {
+  .meuBolso-top {
+    align-items: flex-start;
+    padding-left: 0;
+    height: auto;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+  }
+
+  .btn-login {
+    width: 100%;
+    margin-left: 0px;
+  }
+
+  .fw-bold{
+    font-size: 20px;
+  }
+  
+  .logo-meuBolso {
+    height: 415px; 
+    width: 374px;
+  }
+
+  .meuBolso-top p {
+    margin-left: 0;
+    text-align: start;
+  }
+  
+  .cards-container h2 {
+    padding: 20px 0;
+  }
+  
+  .card {
+    min-height: 250px;
+  }
+  
+  .card-geral {
+    height: 150px;
+  }
+
+  .setinha{
+    width: 40px;
+  }
+}
+
+@media (max-width: 576px) {
+  .logo-meuBolso {
+    min-height: 250px;
+  }
+
+  .btn-fundo{
+    width: 50%;
+    font-size: 16px;
+  }
+}
+
+@keyframes flutuar {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}

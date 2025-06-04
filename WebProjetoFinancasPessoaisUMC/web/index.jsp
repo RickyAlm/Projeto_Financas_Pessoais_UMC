@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@include file="loginUsuario/verificaLogin.jsp"%>
+<%--<%@include file="loginUsuario/verificaLogin.jsp"%>--%>
 <html>
     <head>
         <title>Sistema</title>
@@ -14,7 +14,7 @@
     </head>
     <frameset cols="250, *" noresize="noresize" frameborder="0">
         <frame src="menu.jsp" name="menu_page"/>
-        <frame src="main.html" name="main_page"/>         
+        <frame src="paginaInicial/index.html" name="main_page"/>         
         <noframes>
             <body>
                 <div>Seu Browser não suporta frames.</div>

@@ -21,6 +21,7 @@
         <link rel="stylesheet" href="../assets/css/fontePoppins.css">
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="../assets/js/logout.js"></script>
+        <script src="../assets/js/redirecionar.js"></script>
 <script>
     function confirmarExclusao() {
         Swal.fire({
@@ -51,10 +52,8 @@
         });
     }
 </script>
-
     </head>
-      
-    <body>    
+        <body onload="ctrlRedirecionar.redirecionarURL(true)">
         <%
             Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
             if (usuario == null) {
