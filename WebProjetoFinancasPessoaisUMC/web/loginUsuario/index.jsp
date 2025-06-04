@@ -38,13 +38,13 @@
             </div>
           </div>
 
-          <div class="d-flex justify-content-between mb-4">
+<!--          <div class="d-flex justify-content-between mb-4">
             <div class="form-check lembre-me">
               <input class="form-check-input" type="checkbox" id="lembreMe">
               <label class="form-check-label poppins-regular" for="lembreMe">Lembrar-me</label>
             </div>
             <a href="#" class="esqueceu-senha poppins-regular">Esqueceu a senha?</a>
-          </div>
+          </div>-->
 
           <button type="submit" class="btn btn-login mb-3 poppins-bold">ENTRAR</button>
 

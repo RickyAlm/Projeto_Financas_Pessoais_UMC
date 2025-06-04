@@ -15,6 +15,22 @@
         <title>Cadastro de Usuários</title>
     </head>
     <body>
+        <%! 
+            public static String md5(String input) {
+                try {
+                    java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
+                    byte[] array = md.digest(input.getBytes("UTF-8"));
+                    StringBuilder sb = new StringBuilder();
+                    for (byte b : array) {
+                        sb.append(String.format("%02x", b & 0xff));
+                    }
+                    return sb.toString();
+                } catch (Exception e) {
+                    return null;
+                }
+            }
+        %>
+
         <%
             if ("POST".equalsIgnoreCase(request.getMethod())) {
                 String nome = request.getParameter("nome");
@@ -52,7 +68,7 @@
                         usuario.setEmail(email);
                         usuario.setTelefone(telefone);
                         usuario.setDataNascimento(LocalDate.parse(dataNascimentoStr));
-                        usuario.setSenha(senha);
+                        usuario.setSenha(md5(senha));
 
                         UsuarioDAO usuarioDAO = new UsuarioDAO();
                         boolean sucesso = usuarioDAO.inserir(usuario);
