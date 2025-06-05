@@ -79,6 +79,12 @@
                                     <span>Minhas Finanças</span>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="categoria/categoria.jsp" target="main_page" class="nav-link">
+                                    <i class="fas fa-tags"></i>
+                                    <span>Categorias</span>
+                                </a>
+                            </li>
                         <% } %>
                     </ul>
                 </div>

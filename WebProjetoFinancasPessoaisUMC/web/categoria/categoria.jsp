@@ -6,6 +6,7 @@
 
 <%@page import="java.util.List"%>
 <%@page import="model.Categoria"%>
+<%@page import="dao.CategoriaDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="../loginUsuario/verificaLogin.jsp"%>
 <!DOCTYPE html>
