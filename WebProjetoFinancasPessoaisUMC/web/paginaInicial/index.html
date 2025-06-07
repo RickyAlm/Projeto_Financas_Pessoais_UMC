@@ -124,7 +124,7 @@
 
   function usuarioEstaLogado() {
     const idSessao = getCookie('idSessao');
-    return !!idSessao;
+    return idSessao !== null && idSessao !== undefined && idSessao.trim() !== '';
   }
 
   function atualizarBotoes() {
