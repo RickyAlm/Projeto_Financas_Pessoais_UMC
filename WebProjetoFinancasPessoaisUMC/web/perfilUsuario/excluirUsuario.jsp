@@ -15,20 +15,20 @@
     </head>
     <body>
         <%
-            Usuario usuario = (Usuario) session.getAttribute("usuario");
+            Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
             if (usuario == null) {
                 out.println("<script>"
                     + "Swal.fire({"
                     + "  icon: 'error',"
                     + "  title: 'Acesso não autorizado',"
                     + "  text: 'Você precisa estar logado para acessar esta página',"
-                    + "}).then(() => { window.location.href = '../loginUsuario/index.jsp'; });"
+                    + "}).then(() => { window.top.location.href = '../loginUsuario/index.jsp'; });"
                     + "</script>");
                 return;
             }
-            
+
             String confirmacao = request.getParameter("confirmacao");
-            
+
             if (confirmacao == null || !confirmacao.equals("true")) {
                 out.println("<script>"
                     + "Swal.fire({"
