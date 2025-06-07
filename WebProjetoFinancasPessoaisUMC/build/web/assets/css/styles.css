@@ -1,0 +1,467 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 15 de mai. de 2025, 11:10:45
+    Author     : Henrique Vieira de Almeida
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  --cor-principal: #009896;
+  --verde-escuro: #008451;
+  --verde-muito-escuro: #0C5741;
+  --azul-escuro: #194E72;
+  --azul-medio: #006996;
+  --verde-claro: #4CE6B5;
+  --fundo-cinza: #f5f7fa;
+}
+
+body {
+  background-color: var(--fundo-cinza);
+  font-family: "Poppins", sans-serif !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  font-size: 15px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: radial-gradient(circle at 10% 20%, rgba(0, 152, 150, 0.05) 0%, rgba(0, 152, 150, 0.05) 90%);
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.cadastro-container,
+.login-container {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 152, 150, 0.15);
+  overflow: hidden;
+  width: 100%;
+  max-width: 470px;
+  transition: all 0.3s ease;
+}
+
+.cadastro-container:hover,
+.login-container:hover {
+  box-shadow: 0 15px 35px rgba(0, 152, 150, 0.25);
+}
+
+.cadastro-header,
+.login-header {
+  background: linear-gradient(135deg, var(--cor-principal), var(--azul-medio));
+  color: white;
+  padding: 25px;
+  text-align: center;
+  position: relative;
+}
+
+.cadastro-header h2,
+.login-header h2 {
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.cadastro-body,
+.login-body {
+  padding: 30px;
+}
+
+.form-control {
+  border-radius: 8px;
+  padding: 12px 15px;
+  border: 2px solid #e9ecef;
+  transition: all 0.3s;
+}
+
+.form-control:focus {
+  border-color: var(--cor-principal);
+  box-shadow: 0 0 0 0.25rem rgba(0, 152, 150, 0.25);
+}
+
+.input-group-text {
+  background-color: white;
+  border-right: none;
+}
+
+.form-floating>label {
+  padding-left: 40px;
+}
+
+.form-check-input:focus {
+    box-shadow: 0 0 0 .25rem rgb(116 160 221 / 25%);
+    border: solid 1px var(--cor-principal);
+}
+
+.lembre-me input:checked {
+    background-color: var(--cor-principal);
+    border: var(--cor-principal);
+}
+
+.lembre-me input:checked:hover {
+    background-color: var(--cor-principal);
+    border: var(--cor-principal);
+}
+
+.esqueceu-senha {
+    text-decoration: none;
+    color: var(--azul-medio);
+}
+
+.esqueceu-senha:hover {
+    text-decoration: underline;
+}
+
+.btn-cadastro,
+.btn-login {
+  background: linear-gradient(to right, var(--cor-principal), var(--azul-medio));
+  border: none;
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+  width: 100%;
+}
+
+.btn-cadastro:hover,
+.btn-login:hover {
+  color: white;
+  background: linear-gradient(to right, var(--cor-principal), var(--azul-escuro));
+  transform: translateY(-2px);
+}
+
+.btn-cadastro:active,
+.btn-login:active {
+  transform: translateY(0);
+}
+
+.social-cadastro,
+.social-login {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.social-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+  transition: all 0.3s;
+}
+
+.social-btn:hover {
+  transform: translateY(-3px);
+}
+
+.facebook {
+  background-color: #3b5998;
+}
+
+.google {
+  background-color: #db4437;
+}
+
+.instagram {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+
+.cadastro-footer,
+.login-footer {
+  text-align: center;
+  margin-top: 20px;
+  color: #6c757d;
+}
+
+.cadastro-footer a,
+.login-footer a {
+  color: var(--azul-medio);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.cadastro-footer a:hover,
+.login-footer a:hover {
+  text-decoration: underline;
+}
+
+.div-campo-input {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.div-campo-input i {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--cor-principal);
+  z-index: 10;
+}
+
+.cadastre-se-div {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.cadastre-se-div::before,
+.cadastre-se-div::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.cadastre-se-text {
+  padding: 0 10px;
+  color: #6c757d;
+  font-size: 14px;
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 152, 150, 0.4);
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgba(0, 152, 150, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 152, 150, 0);
+  }
+}
+
+.verificar-termos {
+  color: var(--azul-medio);
+}
+
+.verificar-termos input:checked {
+  background-color: var(--cor-principal);
+  border-color: var(--cor-principal);
+}
+
+.verificar-termos a {
+    color: var(--azul-medio);
+    text-decoration: underline;
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+}
+
+.form-row .div-campo-input {
+  flex: 1;
+}
+
+/* Adições ao styles.css */
+
+.profile-card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 152, 150, 0.15);
+    overflow: hidden;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+}
+
+.profile-card:hover {
+    box-shadow: 0 15px 35px rgba(0, 152, 150, 0.25);
+}
+
+.profile-body {
+    padding: 30px;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    border: none;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+}
+
+.btn-delete:hover {
+    background-color: #bb2d3b;
+    transform: translateY(-2px);
+}
+
+.btn-logout {
+    background-color: var(--azul-escuro);
+    border: none;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+}
+
+.btn-logout:hover {
+    background-color: #0d426e;
+    transform: translateY(-2px);
+}
+
+.modal-content {
+    border-radius: 15px;
+}
+
+.modal-header {
+    border-bottom: 1px solid #eee;
+}
+
+/* Modal centralizado e responsivo para todo o sistema */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 450px;
+    padding: 25px;
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.active .modal-container {
+    transform: translateY(0);
+}
+
+.modal-header {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.modal-header h2 {
+    margin: 0;
+    color: #194E72;
+    font-size: 22px;
+}
+
+.modal-body {
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #194E72;
+}
+
+.form-group input,
+.form-group select {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 12px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+.form-group input {
+    width: 94%;
+}
+
+.form-group select {
+    width: 100%;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #009896;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 152, 150, 0.1);
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+.btn {
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+}
+
+.btn-cancel {
+    background-color: #f1f1f1;
+    color: #6c757d;
+}
+
+.btn-cancel:hover {
+    background-color: #e2e2e2;
+}
+
+.btn-save {
+    background-color: #009896;
+    color: white;
+}
+
+.btn-save:hover {
+    background-color: #008451;
+    color: white;
+}
+
+.btn-cancel,
+.btn-save {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

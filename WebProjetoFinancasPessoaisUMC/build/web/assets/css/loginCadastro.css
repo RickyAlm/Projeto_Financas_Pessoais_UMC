@@ -1,0 +1,24 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 25 de mai. de 2025, 00:07:21
+    Author     : Henrique Vieira de Almeida
+*/
+
+input[type="email"],
+input[type="password"],
+input[type="text"],
+input[type="tel"],
+input[type="date"] {
+    padding-left: 37px !important;
+}
+
+.modal-footer {
+    border-top: 1px solid #eee;
+}
+
+.texto-bemvindo {
+    font-size: 32px !important;
+}

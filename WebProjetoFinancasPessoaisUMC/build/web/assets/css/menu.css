@@ -1,0 +1,144 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 16 de mai. de 2025, 19:08:54
+    Author     : Henrique Vieira de Almeida
+*/
+
+:root {
+    --cor-principal: #009896;
+    --verde-escuro: #008451;
+    --verde-muito-escuro: #0C5741;
+    --azul-escuro: #194E72;
+    --azul-medio: #006996;
+    --verde-claro: #4CE6B5;
+    --fundo-cinza: #f5f7fa;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+    background-color: var(--fundo-cinza);
+}
+
+.menu-lateral {
+    width: 250px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo-area {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo {
+    height: 80px;
+    filter: brightness(0) invert(1);
+}
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--cor-principal), var(--azul-medio));
+    color: white;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    gap: 10px;
+}
+
+.logo-area {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s;
+    border-left: 3px solid transparent;
+}
+
+.menu-item:hover, .menu-item.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-left: 3px solid var(--cor-principal);
+}
+
+.menu-item i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+.menu-item .badge {
+    margin-left: auto;
+    background-color: var(--cor-principal);
+}
+
+.nav-item.active .nav-link,
+.nav-item:hover .nav-link {
+    color: white;
+}
+
+.nav-item.active, .nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.active {
+    background: linear-gradient(135deg, var(--azul-medio), var(--cor-principal)) !important;;
+}
+
+.nav-link {
+    color: white;
+    padding: 12px 20px;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.nav-link i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+.user-info {
+    flex: 1;
+}
+
+.user-area {
+    padding: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+}
+
+.user-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--cor-principal);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.user-role {
+    font-size: 12px;
+    opacity: 0.7;
+}
